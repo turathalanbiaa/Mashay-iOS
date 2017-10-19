@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JP2-BS-eUF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -79,7 +79,7 @@
         <!--View Controller-->
         <scene sceneID="eqG-TQ-Gyr">
             <objects>
-                <viewController id="JP2-BS-eUF" sceneMemberID="viewController">
+                <viewController id="JP2-BS-eUF" customClass="ViewController" customModule="Mashay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uW5-Ci-Weg"/>
                         <viewControllerLayoutGuide type="bottom" id="CdE-aj-5P1"/>
@@ -98,13 +98,16 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
                                                 <subviews>
                                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNE-aQ-8sb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="66" id="c8M-jp-Nr9"/>
+                                                        </constraints>
                                                         <items>
                                                             <navigationItem title="مشاي" id="2yA-0V-Z9k"/>
                                                         </items>
                                                     </navigationBar>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bf2-jU-l4a">
-                                                        <rect key="frame" x="187" y="44" width="188" height="184"/>
+                                                        <rect key="frame" x="187" y="66" width="188" height="184"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خطوات اليوم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5s-ZP-b3B">
                                                                 <rect key="frame" x="50.5" y="42" width="87" height="24"/>
@@ -112,8 +115,8 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999999999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgz-83-Eve">
-                                                                <rect key="frame" x="44" y="82" width="100" height="21"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgz-83-Eve">
+                                                                <rect key="frame" x="86.5" y="82" width="15" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -128,10 +131,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C74-Vy-biL">
-                                                        <rect key="frame" x="0.0" y="44" width="188" height="184"/>
+                                                        <rect key="frame" x="0.0" y="66" width="188" height="184"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="39944" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abV-nN-e3L">
-                                                                <rect key="frame" x="66" y="82" width="56" height="21"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abV-nN-e3L">
+                                                                <rect key="frame" x="86.5" y="82" width="15" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -195,6 +198,10 @@
                             <constraint firstItem="CdE-aj-5P1" firstAttribute="top" secondItem="ODW-iE-c70" secondAttribute="bottom" id="qm5-P2-InA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="todaySteps" destination="Cgz-83-Eve" id="6qC-hV-0Ob"/>
+                        <outlet property="totalSteps" destination="abV-nN-e3L" id="iSd-1T-XBA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gG5-fd-5aO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
