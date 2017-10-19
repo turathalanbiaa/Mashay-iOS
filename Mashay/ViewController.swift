@@ -18,6 +18,13 @@ class ViewController: UIViewController
     @IBOutlet weak var totalSteps: UILabel!
 
     
+    
+    @IBOutlet weak var lostButton: UIButton!
+    @IBOutlet weak var placesButton: UIButton!
+    @IBOutlet weak var healthButton: UIButton!
+    @IBOutlet weak var allButton: UIButton!
+    
+    
     let pedoMeter = CMPedometer()
     
     override func viewDidLoad()
@@ -26,7 +33,19 @@ class ViewController: UIViewController
         
         saveFirstTimeDateIfNot();
         readPedometerData();
+        
+        setupUI()
     }
+    
+    func setupUI()
+    {
+        lostButton.layer.cornerRadius = 25;
+        placesButton.layer.cornerRadius = 25;
+        healthButton.layer.cornerRadius = 25;
+        allButton.layer.cornerRadius = 25;
+    }
+    
+
     
     
     func readPedometerData()
@@ -77,6 +96,20 @@ class ViewController: UIViewController
             UserDefaults.standard.set(date.timeIntervalSince1970, forKey: FIRST_TIME_DATE)
             UserDefaults.standard.synchronize();
         }
+    }
+    
+    @IBAction func gotoMapAction(_ sender: Any)
+    {
+        let button = sender as! UIButton;
+        gotoMap(category: button.tag);
+    }
+    
+    func gotoMap(category : Int?)
+    {
+        let storybord = UIStoryboard(name: "Main", bundle: nil);
+        let mapViewController = storybord.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController;
+        mapViewController.category = category;
+        present(mapViewController, animated: true, completion: nil);
     }
     
 }

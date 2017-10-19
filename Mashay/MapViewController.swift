@@ -13,6 +13,8 @@ import Mapbox
 class MapViewController: UIViewController , MGLMapViewDelegate
 {
     
+    var category : Int?;
+    
     var mapView: MGLMapView!
     var progressView: UIProgressView!
     
