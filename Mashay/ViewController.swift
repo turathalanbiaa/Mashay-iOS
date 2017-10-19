@@ -16,8 +16,6 @@ class ViewController: UIViewController
     
     @IBOutlet weak var todaySteps: UILabel!
     @IBOutlet weak var totalSteps: UILabel!
-
-    
     
     @IBOutlet weak var lostButton: UIButton!
     @IBOutlet weak var placesButton: UIButton!
@@ -44,8 +42,6 @@ class ViewController: UIViewController
         healthButton.layer.cornerRadius = 25;
         allButton.layer.cornerRadius = 25;
     }
-    
-
     
     
     func readPedometerData()
@@ -107,10 +103,12 @@ class ViewController: UIViewController
     func gotoMap(category : Int?)
     {
         let storybord = UIStoryboard(name: "Main", bundle: nil);
-        let mapViewController = storybord.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController;
-        mapViewController.category = category;
-        present(mapViewController, animated: true, completion: nil);
+        let controller = storybord.instantiateViewController(withIdentifier: "NearestPlaceViewController") as! NearestPlaceViewController;
+        controller.category = category;
+        present(controller, animated: true, completion: nil);
     }
+    
+    
     
 }
 

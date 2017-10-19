@@ -9,7 +9,6 @@
 import UIKit
 import Mapbox
 
-
 class MapViewController: UIViewController , MGLMapViewDelegate
 {
     
