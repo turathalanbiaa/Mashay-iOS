@@ -35,18 +35,18 @@ class Place
         return location1.distance(from: location2);
     }
     
-    static func nearestPlace(longitude : Double , latitude : Double) -> Place
+    static func nearestPlace(longitude : Double , latitude : Double , category : Int) -> Place
     {
         let givenPlace = Place(longitude : longitude , latitude : latitude , title : "" , colNo : 0 , category : 0);
         var minDistancePlace : Place? = nil;
         for place : Place in Place.all
         {
-            if minDistancePlace == nil {
+            if minDistancePlace == nil && category == place.category {
                 minDistancePlace = place;
                 continue;
             }
             
-            if place.latitude < latitude
+            if place.latitude < latitude || category != place.category
             {
                 continue;
             }
@@ -57,10 +57,26 @@ class Place
             {
                 minDistancePlace = place;
             }
+            
         }
         
         return minDistancePlace!;
     }
+    
+    static func getPlacesByCategory(category : Int) -> [Place]
+    {
+        var places : [Place] = [];
+        for place : Place in Place.all
+        {
+            if place.category == category
+            {
+                places.append(place);
+            }
+        }
+        
+        return places;
+    }
+    
     
     static var all = [
         Place(longitude: 44.3190385, latitude: 32.0617719, title: "مفرق الطريق الحولي - مقابل الملعب الأولمبي ", colNo: 1, category : 3),

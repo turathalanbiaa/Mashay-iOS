@@ -13,8 +13,12 @@
 		419C3B7D1F95D25100BFB24D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419C3B7C1F95D25100BFB24D /* Assets.xcassets */; };
 		419C3B801F95D25100BFB24D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419C3B7E1F95D25100BFB24D /* LaunchScreen.storyboard */; };
 		419C3B881F95E66500BFB24D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419C3B871F95E66500BFB24D /* MapViewController.swift */; };
+		41B779FC1F9EB80B00483C84 /* AdvicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B779FB1F9EB80B00483C84 /* AdvicesViewController.swift */; };
+		41B779FE1F9EB8E600483C84 /* AdviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B779FD1F9EB8E600483C84 /* AdviceTableViewCell.swift */; };
 		41D562581F98839A004353A3 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D562571F98839A004353A3 /* Place.swift */; };
 		41D5625A1F98944A004353A3 /* NearestPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D562591F98944A004353A3 /* NearestPlaceViewController.swift */; };
+		41FF388F1F9E8A2400A4EB17 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FF388E1F9E8A2400A4EB17 /* DateUtils.swift */; };
+		41FF38911F9E8AA000A4EB17 /* PedoMeterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FF38901F9E8AA000A4EB17 /* PedoMeterReader.swift */; };
 		4987E4A65E0E80621838E552 /* libPods-Mashay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF800EAC9463119063AFCA6F /* libPods-Mashay.a */; };
 /* End PBXBuildFile section */
 
@@ -28,9 +32,13 @@
 		419C3B811F95D25100BFB24D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		419C3B871F95E66500BFB24D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		419C3B891F95E9F400BFB24D /* Mashay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mashay.entitlements; sourceTree = "<group>"; };
+		41B779FB1F9EB80B00483C84 /* AdvicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvicesViewController.swift; sourceTree = "<group>"; };
+		41B779FD1F9EB8E600483C84 /* AdviceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdviceTableViewCell.swift; sourceTree = "<group>"; };
 		41D562571F98839A004353A3 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		41D562591F98944A004353A3 /* NearestPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearestPlaceViewController.swift; sourceTree = "<group>"; };
 		41D5625B1F98B6F2004353A3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		41FF388E1F9E8A2400A4EB17 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		41FF38901F9E8AA000A4EB17 /* PedoMeterReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedoMeterReader.swift; sourceTree = "<group>"; };
 		BF800EAC9463119063AFCA6F /* libPods-Mashay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mashay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC7968D6CA5F3F7AF986ACA /* Pods-Mashay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mashay.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mashay/Pods-Mashay.release.xcconfig"; sourceTree = "<group>"; };
 		E3D4A766BAB4F10AA7B724EA /* Pods-Mashay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mashay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mashay/Pods-Mashay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,14 +88,18 @@
 			children = (
 				419C3B891F95E9F400BFB24D /* Mashay.entitlements */,
 				419C3B751F95D25100BFB24D /* AppDelegate.swift */,
-				419C3B771F95D25100BFB24D /* ViewController.swift */,
 				419C3B791F95D25100BFB24D /* Main.storyboard */,
 				419C3B7C1F95D25100BFB24D /* Assets.xcassets */,
 				419C3B7E1F95D25100BFB24D /* LaunchScreen.storyboard */,
 				419C3B811F95D25100BFB24D /* Info.plist */,
-				419C3B871F95E66500BFB24D /* MapViewController.swift */,
-				41D562571F98839A004353A3 /* Place.swift */,
+				419C3B771F95D25100BFB24D /* ViewController.swift */,
 				41D562591F98944A004353A3 /* NearestPlaceViewController.swift */,
+				419C3B871F95E66500BFB24D /* MapViewController.swift */,
+				41B779FB1F9EB80B00483C84 /* AdvicesViewController.swift */,
+				41D562571F98839A004353A3 /* Place.swift */,
+				41FF388E1F9E8A2400A4EB17 /* DateUtils.swift */,
+				41FF38901F9E8AA000A4EB17 /* PedoMeterReader.swift */,
+				41B779FD1F9EB8E600483C84 /* AdviceTableViewCell.swift */,
 			);
 			path = Mashay;
 			sourceTree = "<group>";
@@ -239,10 +251,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				419C3B781F95D25100BFB24D /* ViewController.swift in Sources */,
+				41FF388F1F9E8A2400A4EB17 /* DateUtils.swift in Sources */,
 				419C3B881F95E66500BFB24D /* MapViewController.swift in Sources */,
+				41FF38911F9E8AA000A4EB17 /* PedoMeterReader.swift in Sources */,
+				41B779FC1F9EB80B00483C84 /* AdvicesViewController.swift in Sources */,
 				419C3B761F95D25100BFB24D /* AppDelegate.swift in Sources */,
 				41D562581F98839A004353A3 /* Place.swift in Sources */,
 				41D5625A1F98944A004353A3 /* NearestPlaceViewController.swift in Sources */,
+				41B779FE1F9EB8E600483C84 /* AdviceTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,17 +14,20 @@ class MapViewController: UIViewController , MGLMapViewDelegate
     
     var category : Int?;
     
+    @IBOutlet weak var mapContainer: UIView!
     var mapView: MGLMapView!
     var progressView: UIProgressView!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
+        
         super.viewDidLoad()
         
-        mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.darkStyleURL())
+        mapView = MGLMapView(frame: mapContainer.bounds, styleURL: MGLStyle.darkStyleURL())
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.tintColor = .gray
         mapView.delegate = self
-        view.addSubview(mapView)
+        mapContainer.addSubview(mapView)
 
         mapView.setCenter(CLLocationCoordinate2D(latitude: 32.320, longitude: 44.269),
                           zoomLevel: 9.5, animated: false)
@@ -34,65 +37,76 @@ class MapViewController: UIViewController , MGLMapViewDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(offlinePackDidReceiveError), name: NSNotification.Name.MGLOfflinePackError, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(offlinePackDidReceiveMaximumAllowedMapboxTiles), name: NSNotification.Name.MGLOfflinePackMaximumMapboxTilesReached, object: nil)
         
-        
-        let pisa = MGLPointAnnotation()
-        pisa.coordinate = CLLocationCoordinate2D(latitude: 32.320, longitude: 44.269)
-        pisa.title = "Leaning Tower of Pisa"
-        mapView.addAnnotation(pisa)
+        displayAnnotations();
 
     }
     
-    func mapViewDidFinishLoadingMap(_ mapView: MGLMapView) {
-        // Start downloading tiles and resources for z13-16.
+    func displayAnnotations()
+    {
+        let places = Place.getPlacesByCategory(category: self.category!);
+        for place : Place in places
+        {
+            let annotation = MGLPointAnnotation();
+            annotation.coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude);
+            annotation.title = place.title;
+            annotation.subtitle = String("عامود رقم") + String(place.colNo);
+            mapView.addAnnotation(annotation);
+        }
+        
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MGLMapView)
+    {
         startOfflinePackDownload()
     }
     
-    deinit {
-        // Remove offline pack observers.
+    deinit
+    {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func startOfflinePackDownload() {
-        // Create a region that includes the current viewport and any tiles needed to view it when zoomed further in.
-        // Because tile count grows exponentially with the maximum zoom level, you should be conservative with your `toZoomLevel` setting.
+    func startOfflinePackDownload()
+    {
         let region = MGLTilePyramidOfflineRegion(styleURL: mapView.styleURL, bounds: mapView.visibleCoordinateBounds, fromZoomLevel: mapView.zoomLevel, toZoomLevel: 14)
         
-        // Store some data for identification purposes alongside the downloaded resources.
         let userInfo = ["name": "My Offline Pack"]
         let context = NSKeyedArchiver.archivedData(withRootObject: userInfo)
         
-        // Create and register an offline pack with the shared offline storage object.
         
-        MGLOfflineStorage.shared().addPack(for: region, withContext: context) { (pack, error) in
-            guard error == nil else {
-                // The pack couldn’t be created for some reason.
+        MGLOfflineStorage.shared().addPack(for: region, withContext: context)
+        {
+            (pack, error) in
+            guard error == nil else
+            {
+                if(self.progressView != nil)
+                {
+                    self.progressView.isHidden = true;
+                }
+            
                 print("Error: \(error?.localizedDescription ?? "unknown error")")
                 return
             }
             
-            // Start downloading.
             pack!.resume()
         }
         
     }
     
-    // MARK: - MGLOfflinePack notification handlers
     
-    @objc func offlinePackProgressDidChange(notification: NSNotification) {
-        // Get the offline pack this notification is regarding,
-        // and the associated user info for the pack; in this case, `name = My Offline Pack`
-        if let pack = notification.object as? MGLOfflinePack,
-            let userInfo = NSKeyedUnarchiver.unarchiveObject(with: pack.context) as? [String: String] {
+    @objc func offlinePackProgressDidChange(notification: NSNotification)
+    {
+        if  let pack = notification.object as? MGLOfflinePack,
+            let userInfo = NSKeyedUnarchiver.unarchiveObject(with: pack.context) as? [String: String]
+        {
             let progress = pack.progress
-            // or notification.userInfo![MGLOfflinePackProgressUserInfoKey]!.MGLOfflinePackProgressValue
             let completedResources = progress.countOfResourcesCompleted
             let expectedResources = progress.countOfResourcesExpected
             
-            // Calculate current progress percentage.
             let progressPercentage = Float(completedResources) / Float(expectedResources)
             
             // Setup the progress bar.
-            if progressView == nil {
+            if progressView == nil
+            {
                 progressView = UIProgressView(progressViewStyle: .default)
                 let frame = view.bounds.size
                 progressView.frame = CGRect(x: frame.width / 4, y: frame.height * 0.75, width: frame.width / 2, height: 10)
@@ -101,11 +115,14 @@ class MapViewController: UIViewController , MGLMapViewDelegate
             
             progressView.progress = progressPercentage
             
-            // If this pack has finished, print its size and resource count.
-            if completedResources == expectedResources {
+            if completedResources == expectedResources
+            {
+                self.progressView.isHidden = true;
                 let byteCount = ByteCountFormatter.string(fromByteCount: Int64(pack.progress.countOfBytesCompleted), countStyle: ByteCountFormatter.CountStyle.memory)
                 print("Offline pack “\(userInfo["name"] ?? "unknown")” completed: \(byteCount), \(completedResources) resources")
-            } else {
+            }
+            else
+            {
                 // Otherwise, print download/verification progress.
                 print("Offline pack “\(userInfo["name"] ?? "unknown")” has \(completedResources) of \(expectedResources) resources — \(progressPercentage * 100)%.")
             }
@@ -116,7 +133,13 @@ class MapViewController: UIViewController , MGLMapViewDelegate
     {
         if let pack = notification.object as? MGLOfflinePack,
             let userInfo = NSKeyedUnarchiver.unarchiveObject(with: pack.context) as? [String: String],
-            let error = notification.userInfo?[MGLOfflinePackUserInfoKey.error] as? NSError {
+            let error = notification.userInfo?[MGLOfflinePackUserInfoKey.error] as? NSError
+        {
+            if(self.progressView != nil)
+            {
+                self.progressView.isHidden = true;
+            }
+            
             print("Offline pack “\(userInfo["name"] ?? "unknown")” received error: \(error.localizedFailureReason ?? "unknown error")")
         }
     }
@@ -125,25 +148,34 @@ class MapViewController: UIViewController , MGLMapViewDelegate
     {
         if let pack = notification.object as? MGLOfflinePack,
             let userInfo = NSKeyedUnarchiver.unarchiveObject(with: pack.context) as? [String: String],
-            let maximumCount = (notification.userInfo?[MGLOfflinePackUserInfoKey.maximumCount] as AnyObject).uint64Value {
+            let maximumCount = (notification.userInfo?[MGLOfflinePackUserInfoKey.maximumCount] as AnyObject).uint64Value
+        {
+            if(self.progressView != nil)
+            {
+                self.progressView.isHidden = true;
+            }
+            
             print("Offline pack “\(userInfo["name"] ?? "unknown")” reached limit of \(maximumCount) tiles.")
         }
     }
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage?
     {
-        // Try to reuse the existing ‘pisa’ annotation image, if it exists.
-        var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "pisa")
-        
-        if annotationImage == nil {
+        var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "annotation")
+        if annotationImage == nil
+        {
             var image = UIImage(named: "blue_place")!
             image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
-            annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "pisa")
+            annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "annotation")
         }
         
         return annotationImage
     }
 
+    @IBAction func dismiss(_ sender: Any)
+    {
+        self.dismiss(animated: true, completion: nil);
+    }
     
 }
 
