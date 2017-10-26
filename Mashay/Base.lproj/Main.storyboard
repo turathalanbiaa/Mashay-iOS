@@ -6,13 +6,19 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="JF-Flat-regular.ttf">
+            <string>JFFlat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Map View Controller-->
         <scene sceneID="1rJ-9v-1wc">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="ToI-po-xUX" customClass="MapViewController" customModule="Mashay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="ToI-po-xUX" customClass="MapViewController" customModule="Mashy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nZE-fw-buF"/>
                         <viewControllerLayoutGuide type="bottom" id="KtA-p6-SjX"/>
@@ -59,100 +65,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8F-yt-BkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-146" y="-27"/>
+            <point key="canvasLocation" x="783" y="-251"/>
         </scene>
-        <!--Advices View Controller-->
-        <scene sceneID="vzG-bq-vm6">
+        <!--Reading View Controller-->
+        <scene sceneID="oeL-Iq-oRo">
             <objects>
-                <viewController id="gmn-Zw-Jea" customClass="AdvicesViewController" customModule="Mashay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OZl-Ex-ztA" customClass="ReadingViewController" customModule="Mashy" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="m6e-mD-Iv6"/>
-                        <viewControllerLayoutGuide type="bottom" id="LCe-9B-6nu"/>
+                        <viewControllerLayoutGuide type="top" id="fCX-Wc-BVl"/>
+                        <viewControllerLayoutGuide type="bottom" id="rok-RI-VcI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2NN-Xx-yjZ">
+                    <view key="view" contentMode="scaleToFill" id="oce-vD-XLv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6z6-42-wmA">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2t-ri-Xba">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="Wwi-66-sXh"/>
+                                    <constraint firstAttribute="height" constant="66" id="ct6-Gq-NWQ"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="مشاي" id="afa-7k-WWS">
-                                        <barButtonItem key="rightBarButtonItem" title="رجوع" id="RpW-NU-1mf">
+                                    <navigationItem title="زيارة الاربعين" id="8YS-Ev-fNh">
+                                        <leftBarButtonItems>
+                                            <barButtonItem image="ic_zoom_in_36pt" id="WeJ-qj-JLG">
+                                                <connections>
+                                                    <action selector="fontUp:" destination="OZl-Ex-ztA" id="uro-q4-Oja"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="ic_zoom_out_36pt" id="2mU-S4-oGc">
+                                                <connections>
+                                                    <action selector="fontDown:" destination="OZl-Ex-ztA" id="RmU-5d-dF4"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="رجوع" id="5ce-yz-tQr">
                                             <connections>
-                                                <action selector="dismiss:" destination="gmn-Zw-Jea" id="8d8-5T-Yby"/>
+                                                <action selector="dismiss:" destination="6Br-b5-vMY" id="M7z-Sn-UAN"/>
+                                                <segue destination="bzJ-e8-Gcr" kind="show" id="YdE-j7-j4y"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BtV-1t-6mg">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFr-f6-WJk">
                                 <rect key="frame" x="0.0" y="66" width="375" height="601"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="adviceCell" rowHeight="60" id="gGn-Pe-rJc" customClass="AdviceTableViewCell" customModule="Mashay" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gGn-Pe-rJc" id="gjk-Lq-aNo" customClass="AdviceTableViewCell" customModule="Mashay" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="yiZ-MG-Lg0">
-                                                    <rect key="frame" x="327" y="16" width="32" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="32" id="hrg-an-7sB"/>
-                                                        <constraint firstAttribute="height" constant="32" id="jpf-2s-Uoo"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huda" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXW-Vj-BNS">
-                                                    <rect key="frame" x="8" y="16" width="311" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="leadingMargin" secondItem="BXW-Vj-BNS" secondAttribute="leading" id="7Gi-HQ-rsj"/>
-                                                <constraint firstAttribute="trailing" secondItem="yiZ-MG-Lg0" secondAttribute="trailing" constant="16" id="DYP-14-BzU"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="BXW-Vj-BNS" secondAttribute="bottom" constant="15" id="Fur-7w-EOm"/>
-                                                <constraint firstItem="yiZ-MG-Lg0" firstAttribute="top" secondItem="gjk-Lq-aNo" secondAttribute="top" constant="16" id="J5i-2M-onu"/>
-                                                <constraint firstItem="BXW-Vj-BNS" firstAttribute="top" secondItem="gjk-Lq-aNo" secondAttribute="topMargin" constant="8" id="LCM-fU-uaY"/>
-                                                <constraint firstItem="yiZ-MG-Lg0" firstAttribute="leading" secondItem="BXW-Vj-BNS" secondAttribute="trailing" constant="8" id="x5E-ma-x1Z"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="adviceLabel" destination="BXW-Vj-BNS" id="DCu-2o-uib"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="xNQ-Um-JU5">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="uPW-cI-zfH">
+                                        <rect key="frame" x="8" y="8" width="359" height="585"/>
+                                        <mutableString key="text">السَّلامُ عَلى وَلِيِّ الله وَحَبِيبِهِ، السَّلامُ عَلى خَلِيلِ الله وَنَجِيبِهِ، السَّلامُ عَلى صَفِيِّ الله وَابْنِ صَفِيِّهِ، السَّلامُ عَلى الحُسَيْنِ المَظْلُومِ الشَّهِيدِ، السَّلامُ عَلى أَسِيرِ الكُرُباتِ وَقَتِيلِ العَبَراتِ، اللّهُمَّ إِنِّي أَشْهَدُ أَنَّهُ وَلِيُّكَ وَصَفِيُّكَ وَابْنُ صَفِيِّكَ الفائِزُ بِكَرامَتِكَ أَكْرَمْتَهُ بِالشَّهادَهِ وَحَبَوْتَهُ بِالسَّعادَهِ وَاجْتَبَيْتَهُ بِطِيبِ الوِلادَةِ وَجَعَلْتَهُ سَيِّداً مِنَ السَّادَةِ وَقائِداً مِنَ القادَةِ وَذائِداً مِنَ الذَّادَةِ وَأَعْطَيْتَهُ مَوارِيثَ الأَنْبِياءِ وَجَعَلْتَهُ حُجَّةً عَلى خَلْقِكَ مِنَ الأَوْصِياء، فَأَعْذَرَ فِي الدُّعاءِ وَمَنَحَ النُّصْحَ وَبَذَلَ مُهْجَتَهُ فِيكَ لِيَسْتَنْقِذَ عِبادَكَ مِنَ الجَهالَةِ وَحَيْرَةِ الضَّلالَهِ، وَقَدْ تَوازَرَ عَلَيْهِ مَنْ غَرَّتْهُ الدُّنْيا وَباعَ حَظَّهُ بِالاَرْذَلِ الاَدْنى وَشَرى آخِرَتَهُ بِالثَّمَنِ الاَوْكَسِ وَتَغَطْرَسَ وَتَرَدّى فِي هَواهُ وَأَسْخَطَكَ وَأَسْخَطَ نَبِيَّكَ وَأَطاعَ مِنْ عِبادِكَ أَهْلَ الشِّقاقِ وَالنِّفاقِ وَحَمَلَةَ الاَوْزارِ المُسْتَوْجِبِينَ النَّار، فَجاهَدَهُمْ فِيكَ صابِراً مُحْتَسِباً حَتّى سُفِكَ فِي طاعَتِكَ دَمُهُ وَاسْتُبِيحَ حَرِيمُهُ ؛ اللّهُمَّ فَالعَنْهُمْ لَعْنا وَبِيلاً وَعَذِّبْهُمْ عَذاباً أَلِيماً. السَّلامُ عَلَيْكَ يابْنَ رَسُولِ اللهِ، السَّلامُ عَلَيْكَ يابْنَ سَيِّدِ الأَوْصِياء، أَشْهَدُ أَنَّكَ أَمِينُ الله وَابْنُ أَمِينِهِ عِشْتَ سَعِيداً وَمَضَيْتَ حَمِيداً وَمُتَّ فَقِيداً مَظْلُوماً شَهِيداً، وَأَشْهَدُ أَنَّ الله مُنْجِزٌ ما وَعَدَكَ وَمُهْلِكُ مَنْ خَذَلَكَ وَمُعَذِّبُ مَنْ قَتَلَكَ، وَأَشْهَدُ أَنَّكَ وَفَيْتَ بِعَهْدِ الله وَجاهَدْتَ فِي سَبِيلِهِ حَتّى أَتاكَ اليَّقِينُ، فَلَعَنَ الله مَنْ قَتَلَكَ وَلَعَنَ الله مَنْ ظَلَمَكَ وَلَعَنَ الله اُمَّةً سَمِعَتْ بِذلِكَ فَرَضِيَتْ بِهِ، اللّهُمَّ إِنِّي أُشْهِدُكَ أَنِّي وَلِيُّ لِمَنْ وَالاهُ وَعَدُوُّ لِمَنْ عاداهُ. بِأَبِي أَنْتَ وَاُمِّي يابْنَ رَسُولِ الله أَشْهَدُ أَنَّكَ كُنْتَ نُوراً فِي الاَصْلابِ الشَّامِخَةِ وَالاَرْحامِ المُطَهَّرَةِ لَمْ تُنَجِّسْكَ الجاهِلِيَّةُ بِأَنْجاسِها وَلَمْ تُلْبِسْكَ المُدْلَهِمَّاتِ مِنْ ثِيابِها، وَأَشْهَدُ أَنَّكَ مِنْ دَعائِمِ الدِّينِ وَأَرْكانَ المُسْلِمينَ وَمَعْقِلِ المُؤْمِنِينَ، وَأَشْهَدُ أَنَّكَ الإمام البَرُّ التَّقِيُّ الرَّضِيُّ الزَّكِيُّ الهادِي المَهْدِيُّ، وَأَشْهَدُ أَنَّ الأَئِمَّةِ مِنْ وُلْدِكَ كَلِمَةُ التَّقْوى وَأَعْلامِ الهُدى وَالعُرْوَةُ الوُثْقى وَالحُجَّةُ على أَهْلِ الدُّنْيا، وَأَشْهَدُ أَنِّي بِكُمْ مُؤْمِنٌ وَبِإِيَّابِكُمْ مُوقِنٌ بِشَرايِعِ دِينِي وَخَواتِيمِ عَمَلِي وَقَلْبِي لِقَكْبِكُمْ سِلْمٌ وَأَمْرِي لاَمْرِكُمْ مُتَّبِعٌ وَنُصْرَتِي لَكُمْ مُعَدَّةٌ حَتّى يَأْذَنَ الله لَكُمْ ؛ فَمَعَكُمْ مَعَكُمْ لا مَعَ عَدُوِّكُمْ، صَلَواتُ الله عَلَيْكُمْ وَعَلى أَرْواحِكُمْ وَأَجسادِكُمْ وَشاهِدِكُمْ وَغائِبِكُمْ وَظاهِرِكُمْ وَباطِنِكُمْ آمِينَ رَبَّ العالَمِينَ </mutableString>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xNQ-Um-JU5" secondAttribute="trailing" id="2os-8W-uhd"/>
+                                    <constraint firstAttribute="bottom" secondItem="uPW-cI-zfH" secondAttribute="bottom" constant="8" id="6uy-3r-K2o"/>
+                                    <constraint firstItem="uPW-cI-zfH" firstAttribute="centerY" secondItem="EFr-f6-WJk" secondAttribute="centerY" id="AjU-md-KrU"/>
+                                    <constraint firstAttribute="trailing" secondItem="uPW-cI-zfH" secondAttribute="trailing" constant="8" id="J66-jD-GJX"/>
+                                    <constraint firstItem="uPW-cI-zfH" firstAttribute="leading" secondItem="EFr-f6-WJk" secondAttribute="leading" constant="8" id="LWO-vA-XqM"/>
+                                    <constraint firstItem="xNQ-Um-JU5" firstAttribute="leading" secondItem="EFr-f6-WJk" secondAttribute="leading" id="N2k-Yc-gAH"/>
+                                    <constraint firstItem="uPW-cI-zfH" firstAttribute="centerX" secondItem="EFr-f6-WJk" secondAttribute="centerX" id="Ul2-qE-jOv"/>
+                                    <constraint firstItem="xNQ-Um-JU5" firstAttribute="top" secondItem="EFr-f6-WJk" secondAttribute="top" id="Zzh-Vk-DmU"/>
+                                    <constraint firstAttribute="bottom" secondItem="xNQ-Um-JU5" secondAttribute="bottom" id="f1h-mu-utD"/>
+                                    <constraint firstItem="uPW-cI-zfH" firstAttribute="top" secondItem="EFr-f6-WJk" secondAttribute="top" constant="8" id="omv-ap-0nj"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6z6-42-wmA" firstAttribute="top" secondItem="2NN-Xx-yjZ" secondAttribute="top" id="0ER-Fb-KE4"/>
-                            <constraint firstItem="LCe-9B-6nu" firstAttribute="top" secondItem="BtV-1t-6mg" secondAttribute="bottom" id="6X3-0i-wQV"/>
-                            <constraint firstItem="6z6-42-wmA" firstAttribute="leading" secondItem="2NN-Xx-yjZ" secondAttribute="leading" id="Eol-rw-ihz"/>
-                            <constraint firstAttribute="trailing" secondItem="6z6-42-wmA" secondAttribute="trailing" id="SKs-tS-1tp"/>
-                            <constraint firstItem="BtV-1t-6mg" firstAttribute="leading" secondItem="2NN-Xx-yjZ" secondAttribute="leading" id="f5g-xH-Gtb"/>
-                            <constraint firstAttribute="trailing" secondItem="BtV-1t-6mg" secondAttribute="trailing" id="jKs-db-j5f"/>
-                            <constraint firstItem="BtV-1t-6mg" firstAttribute="top" secondItem="6z6-42-wmA" secondAttribute="bottom" id="ulx-Iy-hD6"/>
+                            <constraint firstItem="rok-RI-VcI" firstAttribute="top" secondItem="EFr-f6-WJk" secondAttribute="bottom" id="7JS-1e-FSm"/>
+                            <constraint firstItem="EFr-f6-WJk" firstAttribute="leading" secondItem="oce-vD-XLv" secondAttribute="leading" id="WV2-8h-YT4"/>
+                            <constraint firstAttribute="trailing" secondItem="x2t-ri-Xba" secondAttribute="trailing" id="b0F-eA-gz5"/>
+                            <constraint firstAttribute="trailing" secondItem="EFr-f6-WJk" secondAttribute="trailing" id="eIZ-Jr-cGE"/>
+                            <constraint firstItem="x2t-ri-Xba" firstAttribute="top" secondItem="oce-vD-XLv" secondAttribute="top" id="mas-a8-5Jj"/>
+                            <constraint firstItem="x2t-ri-Xba" firstAttribute="leading" secondItem="oce-vD-XLv" secondAttribute="leading" id="wZi-FW-P1d"/>
+                            <constraint firstItem="EFr-f6-WJk" firstAttribute="top" secondItem="x2t-ri-Xba" secondAttribute="bottom" id="xE9-Ha-reh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="advicesTableView" destination="BtV-1t-6mg" id="0d5-2t-Jev"/>
+                        <outlet property="paragraph" destination="uPW-cI-zfH" id="bWj-5S-hhl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HVv-RZ-aX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DqD-qZ-9up" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="533.60000000000002" y="-27.436281859070466"/>
+            <point key="canvasLocation" x="-820" y="-1059"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aCy-Vy-aTh">
             <objects>
-                <viewController id="bzJ-e8-Gcr" customClass="ViewController" customModule="Mashay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bzJ-e8-Gcr" customClass="ViewController" customModule="Mashy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0J0-5c-05A"/>
                         <viewControllerLayoutGuide type="bottom" id="Jey-uc-UbK"/>
@@ -161,6 +167,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Ywj-sU-zZv">
+                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qx-rQ-0eQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -175,45 +184,46 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaD-FZ-EpW">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خطوات اليوم : " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf3-1f-DrH">
-                                                <rect key="frame" x="236" y="35" width="123" height="24"/>
+                                                <rect key="frame" x="236" y="35" width="123" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="123" id="yR8-fG-FdS"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-M2-AXi">
-                                                <rect key="frame" x="18" y="38" width="179" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <rect key="frame" x="18" y="35" width="179" height="18"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="العدد الكلي : " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9W-JI-w1I">
-                                                <rect key="frame" x="236" y="79" width="123" height="24"/>
+                                                <rect key="frame" x="236" y="73" width="123" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="123" id="t1O-tT-Mbh"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGB-kT-JJt">
-                                                <rect key="frame" x="16" y="82" width="181" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <rect key="frame" x="16" y="73" width="181" height="18"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-ZR-153">
-                                                <rect key="frame" x="97" y="165" width="180" height="48"/>
+                                                <rect key="frame" x="97" y="153" width="180" height="48"/>
                                                 <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="6gU-78-fLF"/>
                                                     <constraint firstAttribute="height" constant="48" id="U2z-3w-ZKC"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <state key="normal" title="مراكز ارشاد التائهين">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -222,12 +232,13 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rr-aF-roN">
-                                                <rect key="frame" x="97" y="233" width="180" height="48"/>
+                                                <rect key="frame" x="97" y="221" width="180" height="48"/>
                                                 <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="4yZ-eM-hNl"/>
                                                     <constraint firstAttribute="height" constant="48" id="SVl-Vy-HMg"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <state key="normal" title="نقاط دالة">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -236,12 +247,13 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNP-8W-Imp">
-                                                <rect key="frame" x="97" y="301" width="180" height="48"/>
+                                                <rect key="frame" x="97" y="289" width="180" height="48"/>
                                                 <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="QGf-PO-J32"/>
                                                     <constraint firstAttribute="height" constant="48" id="WKt-5Y-xwp"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <state key="normal" title="مراكز صحية">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -250,77 +262,257 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="5ht-RR-Y7M">
-                                                <rect key="frame" x="327" y="478" width="32" height="32"/>
+                                                <rect key="frame" x="327" y="750" width="32" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="DLT-M1-uN2"/>
                                                     <constraint firstAttribute="width" constant="32" id="hcl-aC-Lbw"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التزم بمواقيت الصلاة فالحسين خرج من اجل الصلاة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnm-gs-CsL">
-                                                <rect key="frame" x="16" y="489" width="303" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا تصطحب معك اغراض كثيرة ليست لك حاجة بها لانها سوف تعيقك خلال المسير الطويل" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnm-gs-CsL">
+                                                <rect key="frame" x="16" y="728.5" width="295" height="53.5"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="61g-97-3KU">
-                                                <rect key="frame" x="329" y="438" width="32" height="32"/>
+                                                <rect key="frame" x="327" y="672.5" width="32" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="32" id="Y5R-KA-2PK"/>
                                                     <constraint firstAttribute="height" constant="32" id="gNd-Aq-up8"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التزم بمواقيت الصلاة فالحسين خرج من اجل الصلاة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfO-ha-2db">
-                                                <rect key="frame" x="18" y="449" width="303" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عدم إجهاد النفس بالمشي السريع فوق طاقتك" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfO-ha-2db">
+                                                <rect key="frame" x="18" y="669" width="293" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5i-rK-yTn">
-                                                <rect key="frame" x="322" y="531" width="37" height="34"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                <state key="normal" title="المزيد">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="tdI-n4-UyZ">
+                                                <rect key="frame" x="327" y="792" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="FaJ-Au-oqx"/>
+                                                    <constraint firstAttribute="height" constant="32" id="bbb-19-g0m"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="استشارة الطبيب عند الضرورة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjh-t4-x9P">
+                                                <rect key="frame" x="16" y="806" width="295" height="18"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="2Sm-xi-dYl">
+                                                <rect key="frame" x="327" y="834" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Ba2-tX-Duh"/>
+                                                    <constraint firstAttribute="width" constant="32" id="gSl-6x-nHh"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تناول التمر – الفواكه" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDu-XC-R6c">
+                                                <rect key="frame" x="16" y="848" width="295" height="18"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="4C7-oT-1zo">
+                                                <rect key="frame" x="327" y="876" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="eC6-Eu-56Z"/>
+                                                    <constraint firstAttribute="height" constant="32" id="zca-kA-WuI"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تناول السوائل" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30U-k6-ubC">
+                                                <rect key="frame" x="18" y="890" width="293" height="18"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="iRz-Nd-Ocb">
+                                                <rect key="frame" x="327" y="918" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="gN0-8s-5aO"/>
+                                                    <constraint firstAttribute="height" constant="32" id="zBc-ZP-caH"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تناول الوجبات الاساسية من الطعام" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nK-cI-vaV">
+                                                <rect key="frame" x="18" y="932" width="293" height="18"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="2Cy-oj-Kp1">
+                                                <rect key="frame" x="327" y="977.5" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="T19-OZ-8o2"/>
+                                                    <constraint firstAttribute="width" constant="32" id="UGR-aR-Eam"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاستراحة خلال المشي لفترات قصيرة بشكل متكرر لراحة العضلات" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwX-mt-jn8">
+                                                <rect key="frame" x="18" y="974" width="293" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="7Al-uP-p8r">
+                                                <rect key="frame" x="327" y="1037" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="8Pi-lk-OXN"/>
+                                                    <constraint firstAttribute="height" constant="32" id="Lgy-1U-JNt"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تفادي الملابس الضيقة وارتداء ملابس خفيفة خالية من النايلون" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmg-8T-mQD">
+                                                <rect key="frame" x="18" y="1033.5" width="293" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge" translatesAutoresizingMaskIntoConstraints="NO" id="3Cb-pG-gca">
+                                                <rect key="frame" x="327" y="1079" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="4gx-UO-OAm"/>
+                                                    <constraint firstAttribute="width" constant="32" id="7Nb-UL-pDO"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="استخدام احذية مريحة واسعة للمشي" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyy-GW-qtH">
+                                                <rect key="frame" x="18" y="1093" width="293" height="18"/>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okQ-0y-Zh6">
+                                                <rect key="frame" x="97" y="357" width="180" height="48"/>
+                                                <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="180" id="aor-AH-jT0"/>
+                                                    <constraint firstAttribute="height" constant="48" id="lXo-Pe-FAK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <state key="normal" title="زيارة الاربعين">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="gmn-Zw-Jea" kind="show" id="z4j-Fo-mzW"/>
+                                                    <segue destination="OZl-Ex-ztA" kind="show" id="Zai-kD-G2v"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbL-Kx-vVX">
+                                                <rect key="frame" x="97" y="425" width="180" height="48"/>
+                                                <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="Ly5-Qh-ESU"/>
+                                                    <constraint firstAttribute="width" constant="180" id="kN8-Gp-t1b"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <state key="normal" title="زيارة الامام الحسين">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="xNs-U8-2n1" kind="show" id="Dp2-dq-4by"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxy-Vc-k8W">
+                                                <rect key="frame" x="97" y="493" width="180" height="48"/>
+                                                <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="180" id="Nxb-ij-ugH"/>
+                                                    <constraint firstAttribute="height" constant="48" id="ped-2Z-t8R"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <state key="normal" title="زيارة ابا الفضل العباس">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="AlM-c1-gQI" kind="show" id="dFP-x0-cI0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQM-fs-egU">
+                                                <rect key="frame" x="97" y="561" width="180" height="48"/>
+                                                <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="RGM-jd-Iez"/>
+                                                    <constraint firstAttribute="width" constant="180" id="mQL-im-Mlo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
+                                                <state key="normal" title="تطبيق انا معكم">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="openWithYouApp:" destination="bzJ-e8-Gcr" eventType="touchUpInside" id="94M-HU-2TS"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="601" id="0we-o3-CWw"/>
+                                            <constraint firstAttribute="trailing" secondItem="7Al-uP-p8r" secondAttribute="trailing" constant="16" id="0TE-vV-B4U"/>
+                                            <constraint firstAttribute="height" constant="1200" id="0we-o3-CWw"/>
                                             <constraint firstAttribute="trailing" secondItem="5ht-RR-Y7M" secondAttribute="trailing" constant="16" id="3IX-FT-jHu"/>
-                                            <constraint firstItem="61g-97-3KU" firstAttribute="leading" secondItem="xfO-ha-2db" secondAttribute="trailing" constant="8" id="5mm-g5-G9A"/>
-                                            <constraint firstAttribute="trailing" secondItem="i5i-rK-yTn" secondAttribute="trailing" constant="16" id="6Lr-SR-NTL"/>
+                                            <constraint firstItem="GDu-XC-R6c" firstAttribute="top" secondItem="vjh-t4-x9P" secondAttribute="bottom" constant="24" id="3cR-ZK-W8o"/>
+                                            <constraint firstItem="30U-k6-ubC" firstAttribute="top" secondItem="GDu-XC-R6c" secondAttribute="bottom" constant="24" id="5XY-EZ-o1c"/>
+                                            <constraint firstItem="61g-97-3KU" firstAttribute="leading" secondItem="xfO-ha-2db" secondAttribute="trailing" constant="16" id="5mm-g5-G9A"/>
+                                            <constraint firstItem="GDu-XC-R6c" firstAttribute="bottom" secondItem="2Sm-xi-dYl" secondAttribute="bottom" id="6s6-m5-DX0"/>
+                                            <constraint firstItem="gwX-mt-jn8" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="18" id="7Z7-Mk-EyI"/>
                                             <constraint firstItem="W3n-ZR-153" firstAttribute="top" secondItem="E9W-JI-w1I" secondAttribute="bottom" constant="62" id="7mc-6o-KwT"/>
-                                            <constraint firstItem="5ht-RR-Y7M" firstAttribute="leading" secondItem="Dnm-gs-CsL" secondAttribute="trailing" constant="8" id="7tb-ch-6Cf"/>
-                                            <constraint firstItem="xfO-ha-2db" firstAttribute="top" secondItem="iNP-8W-Imp" secondAttribute="bottom" constant="100" id="D5g-xy-nfR"/>
+                                            <constraint firstItem="5ht-RR-Y7M" firstAttribute="leading" secondItem="Dnm-gs-CsL" secondAttribute="trailing" constant="16" id="7tb-ch-6Cf"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Sm-xi-dYl" secondAttribute="trailing" constant="16" id="8XY-N1-8DK"/>
+                                            <constraint firstItem="vmg-8T-mQD" firstAttribute="top" secondItem="gwX-mt-jn8" secondAttribute="bottom" constant="24" id="A7V-Up-8af"/>
+                                            <constraint firstItem="7Al-uP-p8r" firstAttribute="leading" secondItem="vmg-8T-mQD" secondAttribute="trailing" constant="16" id="AO4-CO-ky2"/>
+                                            <constraint firstItem="okQ-0y-Zh6" firstAttribute="centerX" secondItem="jaD-FZ-EpW" secondAttribute="centerX" id="B26-ET-Vh8"/>
                                             <constraint firstItem="Jf3-1f-DrH" firstAttribute="top" secondItem="jaD-FZ-EpW" secondAttribute="top" constant="35" id="F1C-k3-Xwv"/>
                                             <constraint firstAttribute="trailing" secondItem="E9W-JI-w1I" secondAttribute="trailing" constant="16" id="FWk-sa-vRe"/>
+                                            <constraint firstItem="xyy-GW-qtH" firstAttribute="top" secondItem="vmg-8T-mQD" secondAttribute="bottom" constant="24" id="HTQ-SI-SGU"/>
+                                            <constraint firstItem="xyy-GW-qtH" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="18" id="JPc-mQ-0fn"/>
+                                            <constraint firstItem="2Cy-oj-Kp1" firstAttribute="leading" secondItem="gwX-mt-jn8" secondAttribute="trailing" constant="16" id="Jwo-tn-Ix7"/>
                                             <constraint firstItem="iNP-8W-Imp" firstAttribute="centerX" secondItem="jaD-FZ-EpW" secondAttribute="centerX" id="Lg5-Da-gXB"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Cy-oj-Kp1" secondAttribute="trailing" constant="16" id="Ljq-am-syt"/>
+                                            <constraint firstItem="GDu-XC-R6c" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="16" id="N95-yh-oGK"/>
                                             <constraint firstItem="xfO-ha-2db" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="18" id="P9m-36-zim"/>
                                             <constraint firstItem="xfO-ha-2db" firstAttribute="bottom" secondItem="61g-97-3KU" secondAttribute="bottom" id="PH5-JK-TGc"/>
+                                            <constraint firstItem="vmg-8T-mQD" firstAttribute="bottom" secondItem="7Al-uP-p8r" secondAttribute="bottom" id="QMg-fY-l3z"/>
+                                            <constraint firstItem="dxy-Vc-k8W" firstAttribute="top" secondItem="nbL-Kx-vVX" secondAttribute="bottom" constant="20" id="T6S-tz-SDc"/>
+                                            <constraint firstItem="Dnm-gs-CsL" firstAttribute="top" secondItem="xfO-ha-2db" secondAttribute="bottom" constant="24" id="Uk4-u0-oWb"/>
+                                            <constraint firstItem="gwX-mt-jn8" firstAttribute="top" secondItem="3nK-cI-vaV" secondAttribute="bottom" constant="24" id="V1F-e2-xtn"/>
+                                            <constraint firstItem="3nK-cI-vaV" firstAttribute="top" secondItem="30U-k6-ubC" secondAttribute="bottom" constant="24" id="VN7-Jc-Uby"/>
                                             <constraint firstItem="0rr-aF-roN" firstAttribute="top" secondItem="W3n-ZR-153" secondAttribute="bottom" constant="20" id="Vt1-c3-z03"/>
+                                            <constraint firstAttribute="trailing" secondItem="4C7-oT-1zo" secondAttribute="trailing" constant="16" id="XHS-m2-nqR"/>
+                                            <constraint firstItem="dxy-Vc-k8W" firstAttribute="centerX" secondItem="jaD-FZ-EpW" secondAttribute="centerX" id="Xe2-xZ-Qdg"/>
                                             <constraint firstItem="W3n-ZR-153" firstAttribute="centerX" secondItem="jaD-FZ-EpW" secondAttribute="centerX" id="Z5Q-rt-Tgl"/>
+                                            <constraint firstItem="iRz-Nd-Ocb" firstAttribute="leading" secondItem="3nK-cI-vaV" secondAttribute="trailing" constant="16" id="ZYw-Vs-CCJ"/>
+                                            <constraint firstItem="tdI-n4-UyZ" firstAttribute="leading" secondItem="vjh-t4-x9P" secondAttribute="trailing" constant="16" id="Ze6-UV-9I1"/>
+                                            <constraint firstItem="3nK-cI-vaV" firstAttribute="bottom" secondItem="iRz-Nd-Ocb" secondAttribute="bottom" id="Zn2-fo-Uni"/>
+                                            <constraint firstItem="vjh-t4-x9P" firstAttribute="top" secondItem="Dnm-gs-CsL" secondAttribute="bottom" constant="24" id="bfs-RK-IHI"/>
+                                            <constraint firstItem="vjh-t4-x9P" firstAttribute="bottom" secondItem="tdI-n4-UyZ" secondAttribute="bottom" id="c14-hh-DeH"/>
                                             <constraint firstItem="Jf3-1f-DrH" firstAttribute="leading" secondItem="NQS-M2-AXi" secondAttribute="trailing" constant="39" id="dBS-kl-1Di"/>
+                                            <constraint firstItem="nbL-Kx-vVX" firstAttribute="centerX" secondItem="jaD-FZ-EpW" secondAttribute="centerX" id="dbX-Sm-qs5"/>
+                                            <constraint firstItem="gwX-mt-jn8" firstAttribute="bottom" secondItem="2Cy-oj-Kp1" secondAttribute="bottom" id="egA-B6-VJE"/>
                                             <constraint firstItem="NQS-M2-AXi" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="18" id="emi-pB-ANl"/>
+                                            <constraint firstItem="vjh-t4-x9P" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="16" id="fIW-Xz-gzd"/>
+                                            <constraint firstItem="30U-k6-ubC" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="18" id="frX-gC-IiI"/>
+                                            <constraint firstItem="30U-k6-ubC" firstAttribute="bottom" secondItem="4C7-oT-1zo" secondAttribute="bottom" id="gX6-Vs-8nA"/>
                                             <constraint firstItem="0rr-aF-roN" firstAttribute="centerX" secondItem="W3n-ZR-153" secondAttribute="centerX" id="gue-Tv-9a3"/>
-                                            <constraint firstItem="5ht-RR-Y7M" firstAttribute="top" secondItem="61g-97-3KU" secondAttribute="bottom" constant="8" id="gvH-5G-e1X"/>
-                                            <constraint firstItem="i5i-rK-yTn" firstAttribute="top" secondItem="5ht-RR-Y7M" secondAttribute="bottom" constant="21" id="hA1-b8-hBw"/>
+                                            <constraint firstItem="xfO-ha-2db" firstAttribute="top" secondItem="BQM-fs-egU" secondAttribute="bottom" constant="60" id="hAF-j1-fR6"/>
+                                            <constraint firstItem="4C7-oT-1zo" firstAttribute="leading" secondItem="30U-k6-ubC" secondAttribute="trailing" constant="16" id="hCd-K3-OJQ"/>
+                                            <constraint firstItem="3nK-cI-vaV" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="18" id="jgv-wX-I2h"/>
+                                            <constraint firstItem="BQM-fs-egU" firstAttribute="centerX" secondItem="jaD-FZ-EpW" secondAttribute="centerX" id="jjS-0l-AeE"/>
                                             <constraint firstItem="iNP-8W-Imp" firstAttribute="top" secondItem="0rr-aF-roN" secondAttribute="bottom" constant="20" id="juD-2Z-aAK"/>
-                                            <constraint firstAttribute="trailing" secondItem="61g-97-3KU" secondAttribute="trailing" constant="14" id="lIN-Pt-5d8"/>
+                                            <constraint firstAttribute="trailing" secondItem="61g-97-3KU" secondAttribute="trailing" constant="16" id="lIN-Pt-5d8"/>
+                                            <constraint firstAttribute="trailing" secondItem="iRz-Nd-Ocb" secondAttribute="trailing" constant="16" id="lrM-Pq-lfx"/>
                                             <constraint firstAttribute="trailing" secondItem="Jf3-1f-DrH" secondAttribute="trailing" constant="16" id="odh-ec-z7r"/>
                                             <constraint firstItem="UGB-kT-JJt" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="16" id="oz7-B5-4l0"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Cb-pG-gca" secondAttribute="trailing" constant="16" id="pGV-Bc-vBT"/>
                                             <constraint firstItem="E9W-JI-w1I" firstAttribute="leading" secondItem="UGB-kT-JJt" secondAttribute="trailing" constant="39" id="pRp-LY-Moc"/>
+                                            <constraint firstItem="xyy-GW-qtH" firstAttribute="bottom" secondItem="3Cb-pG-gca" secondAttribute="bottom" id="r11-WO-h2u"/>
+                                            <constraint firstItem="3Cb-pG-gca" firstAttribute="leading" secondItem="xyy-GW-qtH" secondAttribute="trailing" constant="16" id="s3u-aN-laR"/>
                                             <constraint firstItem="E9W-JI-w1I" firstAttribute="top" secondItem="Jf3-1f-DrH" secondAttribute="bottom" constant="20" id="t2j-iF-J3N"/>
+                                            <constraint firstItem="2Sm-xi-dYl" firstAttribute="leading" secondItem="GDu-XC-R6c" secondAttribute="trailing" constant="16" id="tg8-Mf-111"/>
                                             <constraint firstItem="NQS-M2-AXi" firstAttribute="bottom" secondItem="Jf3-1f-DrH" secondAttribute="bottom" id="twJ-jR-lSA"/>
+                                            <constraint firstItem="nbL-Kx-vVX" firstAttribute="top" secondItem="okQ-0y-Zh6" secondAttribute="bottom" constant="20" id="u81-Fs-t68"/>
+                                            <constraint firstAttribute="trailing" secondItem="tdI-n4-UyZ" secondAttribute="trailing" constant="16" id="ulZ-fA-TCR"/>
                                             <constraint firstItem="UGB-kT-JJt" firstAttribute="bottom" secondItem="E9W-JI-w1I" secondAttribute="bottom" id="wB6-gu-GdA"/>
+                                            <constraint firstItem="okQ-0y-Zh6" firstAttribute="top" secondItem="iNP-8W-Imp" secondAttribute="bottom" constant="20" id="was-KZ-IxG"/>
                                             <constraint firstItem="Dnm-gs-CsL" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="16" id="wyq-Z6-NdV"/>
                                             <constraint firstItem="Dnm-gs-CsL" firstAttribute="bottom" secondItem="5ht-RR-Y7M" secondAttribute="bottom" id="x4p-fW-Dse"/>
+                                            <constraint firstItem="BQM-fs-egU" firstAttribute="top" secondItem="dxy-Vc-k8W" secondAttribute="bottom" constant="20" id="xKY-hP-Qlc"/>
+                                            <constraint firstItem="vmg-8T-mQD" firstAttribute="leading" secondItem="jaD-FZ-EpW" secondAttribute="leading" constant="18" id="xze-yb-keg"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="jaD-FZ-EpW" secondAttribute="bottom" id="5pB-FP-lgB"/>
                                     <constraint firstItem="jaD-FZ-EpW" firstAttribute="leading" secondItem="Ja7-Vi-uF2" secondAttribute="leading" id="Go6-cZ-XzU"/>
@@ -329,16 +521,19 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4qx-rQ-0eQ" firstAttribute="top" secondItem="sWT-af-g2f" secondAttribute="top" id="IYq-Ej-Fvf"/>
                             <constraint firstAttribute="trailing" secondItem="4qx-rQ-0eQ" secondAttribute="trailing" id="QFU-rv-enI"/>
+                            <constraint firstItem="Jey-uc-UbK" firstAttribute="top" secondItem="Ywj-sU-zZv" secondAttribute="bottom" id="S37-Is-YKw"/>
                             <constraint firstItem="Ja7-Vi-uF2" firstAttribute="leading" secondItem="sWT-af-g2f" secondAttribute="leadingMargin" constant="-16" id="Teb-JP-jc0"/>
                             <constraint firstItem="jaD-FZ-EpW" firstAttribute="width" secondItem="sWT-af-g2f" secondAttribute="width" id="cqg-5q-nug"/>
                             <constraint firstItem="Ja7-Vi-uF2" firstAttribute="top" secondItem="0J0-5c-05A" secondAttribute="bottom" constant="46" id="dNk-KU-IuQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ja7-Vi-uF2" secondAttribute="trailing" constant="-16" id="eJh-if-vGE"/>
                             <constraint firstItem="4qx-rQ-0eQ" firstAttribute="leading" secondItem="sWT-af-g2f" secondAttribute="leading" id="fr3-uq-Na7"/>
+                            <constraint firstItem="Ywj-sU-zZv" firstAttribute="top" secondItem="4qx-rQ-0eQ" secondAttribute="bottom" id="gOW-nV-JyP"/>
+                            <constraint firstItem="Ywj-sU-zZv" firstAttribute="leading" secondItem="sWT-af-g2f" secondAttribute="leading" id="hXq-SG-HlB"/>
                             <constraint firstItem="Jey-uc-UbK" firstAttribute="top" secondItem="Ja7-Vi-uF2" secondAttribute="bottom" id="qvQ-ig-vFG"/>
+                            <constraint firstAttribute="trailing" secondItem="Ywj-sU-zZv" secondAttribute="trailing" id="vSw-47-zVM"/>
                         </constraints>
                     </view>
                     <connections>
@@ -347,16 +542,20 @@
                         <outlet property="placesButton" destination="0rr-aF-roN" id="lk8-NV-YcE"/>
                         <outlet property="todaySteps" destination="NQS-M2-AXi" id="oAr-AO-fJZ"/>
                         <outlet property="totalSteps" destination="UGB-kT-JJt" id="aCs-c3-A7a"/>
+                        <outlet property="withYouButton" destination="BQM-fs-egU" id="hOb-uX-TBC"/>
+                        <outlet property="ziara1Button" destination="okQ-0y-Zh6" id="tZC-X8-GOO"/>
+                        <outlet property="ziara2Button" destination="nbL-Kx-vVX" id="0rb-Qj-jAb"/>
+                        <outlet property="ziara3Button" destination="dxy-Vc-k8W" id="1gU-Sm-Bqz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdW-Fg-llt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1607.2" y="-27.436281859070466"/>
+            <point key="canvasLocation" x="-820" y="-251"/>
         </scene>
         <!--Nearest Place View Controller-->
         <scene sceneID="B04-32-CeP">
             <objects>
-                <viewController storyboardIdentifier="NearestPlaceViewController" id="6Br-b5-vMY" customClass="NearestPlaceViewController" customModule="Mashay" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NearestPlaceViewController" id="6Br-b5-vMY" customClass="NearestPlaceViewController" customModule="Mashy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KlA-PJ-1E5"/>
                         <viewControllerLayoutGuide type="bottom" id="5I1-q3-ef4"/>
@@ -384,36 +583,40 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29F-j7-6WF">
                                 <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اقرب موقع : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVP-qW-TdV">
-                                        <rect key="frame" x="282" y="50" width="85" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="KD5-BM-d2O">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اقرب موقع : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVP-qW-TdV">
+                                        <rect key="frame" x="272" y="50" width="95" height="18"/>
+                                        <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v7-Um-MT3">
-                                        <rect key="frame" x="8" y="94" width="351" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v7-Um-MT3">
+                                        <rect key="frame" x="8" y="88" width="351" height="18"/>
+                                        <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم العمود : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG5-jp-bz6">
-                                        <rect key="frame" x="290.5" y="138" width="76.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم العمود : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG5-jp-bz6">
+                                        <rect key="frame" x="271" y="128.5" width="96" height="18"/>
+                                        <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccf-6u-fS9">
-                                        <rect key="frame" x="267" y="139" width="15" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccf-6u-fS9">
+                                        <rect key="frame" x="252" y="129.5" width="10.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riJ-zl-rZV">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riJ-zl-rZV">
                                         <rect key="frame" x="20" y="276" width="335" height="48"/>
                                         <color key="backgroundColor" red="0.5450980392" green="0.76470588240000004" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="8sb-H2-PGm"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="17"/>
                                         <state key="normal" title="مشاهد الكل على الخارطة">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -429,11 +632,15 @@
                                     <constraint firstAttribute="trailing" secondItem="nVP-qW-TdV" secondAttribute="trailing" constant="8" id="D07-L2-kGB"/>
                                     <constraint firstItem="riJ-zl-rZV" firstAttribute="leading" secondItem="29F-j7-6WF" secondAttribute="leading" constant="20" id="EHQ-ph-UfW"/>
                                     <constraint firstAttribute="trailing" secondItem="IG5-jp-bz6" secondAttribute="trailing" constant="8" id="GIm-Bm-be8"/>
+                                    <constraint firstAttribute="trailing" secondItem="KD5-BM-d2O" secondAttribute="trailing" id="Gx4-Zj-ApT"/>
+                                    <constraint firstAttribute="bottom" secondItem="KD5-BM-d2O" secondAttribute="bottom" id="Ihk-lO-W3Y"/>
                                     <constraint firstItem="riJ-zl-rZV" firstAttribute="centerY" secondItem="29F-j7-6WF" secondAttribute="centerY" id="Rg3-e1-wUc"/>
                                     <constraint firstAttribute="trailing" secondItem="riJ-zl-rZV" secondAttribute="trailing" constant="20" id="SA1-Rs-fcO"/>
                                     <constraint firstItem="riJ-zl-rZV" firstAttribute="centerX" secondItem="29F-j7-6WF" secondAttribute="centerX" id="U93-CA-O93"/>
+                                    <constraint firstItem="KD5-BM-d2O" firstAttribute="top" secondItem="29F-j7-6WF" secondAttribute="top" id="V3e-mF-Jvy"/>
                                     <constraint firstAttribute="trailing" secondItem="9v7-Um-MT3" secondAttribute="trailing" constant="16" id="ZrN-P6-tTz"/>
                                     <constraint firstItem="ccf-6u-fS9" firstAttribute="top" secondItem="9v7-Um-MT3" secondAttribute="bottom" constant="23.5" id="bXu-DU-E2p"/>
+                                    <constraint firstItem="KD5-BM-d2O" firstAttribute="leading" secondItem="29F-j7-6WF" secondAttribute="leading" id="iSv-7Y-6jI"/>
                                     <constraint firstItem="9v7-Um-MT3" firstAttribute="leading" secondItem="29F-j7-6WF" secondAttribute="leading" constant="8" id="n3S-kl-la9"/>
                                     <constraint firstItem="IG5-jp-bz6" firstAttribute="top" secondItem="9v7-Um-MT3" secondAttribute="bottom" constant="22.5" id="yl1-7I-pPO"/>
                                 </constraints>
@@ -459,10 +666,200 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sv-Qg-hDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-879.20000000000005" y="-27.436281859070466"/>
+            <point key="canvasLocation" x="23" y="-251"/>
+        </scene>
+        <!--Reading View Controller-->
+        <scene sceneID="VoA-ll-EvY">
+            <objects>
+                <viewController id="xNs-U8-2n1" customClass="ReadingViewController" customModule="Mashy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JsG-i0-azU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bpw-qC-z1v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TLb-wa-KcH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50v-YT-OkF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="DFr-hx-RDY"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="زيارة الامام الحسين" id="jgj-nj-ECK">
+                                        <leftBarButtonItems>
+                                            <barButtonItem image="ic_zoom_in_36pt" id="Foa-RT-HAr">
+                                                <connections>
+                                                    <action selector="fontUp:" destination="xNs-U8-2n1" id="4AV-U6-b02"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="ic_zoom_out_36pt" id="VBb-jX-hjV">
+                                                <connections>
+                                                    <action selector="fontDown:" destination="xNs-U8-2n1" id="fZL-ck-zMD"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="رجوع" id="AUT-Pz-t2d">
+                                            <connections>
+                                                <action selector="dismiss:" destination="6Br-b5-vMY" id="agR-3W-c8Z"/>
+                                                <segue destination="bzJ-e8-Gcr" kind="show" id="BQl-Z5-giO"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVG-GG-djw">
+                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="yfm-jx-Xg4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="0UC-X5-UTQ">
+                                        <rect key="frame" x="8" y="8" width="359" height="585"/>
+                                        <mutableString key="text">اَلسّلامُ عَلَيكَ يا وارِثَ آدَمَ صَفوَةِ اللهِ، السّلامُ عَلَيكَ يَا وَارِثَ نُوحٍ نَبِيِّ اللهِ، السّلامُ عَلَيكَ يَا وَارِثَ إِبرَاهِيمَ خَلِيلِ اللهِ، السّلامُ عَلَيكَ يَا وَارِثَ مُوسَى كَلِيمِ اللهِ، السّلامُ عَلَيكَ يَا وَارِثَ عِيسَى رُوحِ اللهِ، السّلامُ عَلَيكَ يَا وَارِثَ مُحَمَّدٍ حَبِيبِ اللهِ، السّلامُ عَلَيكَ يَا وَارِثَ أَمِيرِ المُؤمِنِينَ وَلِيِّ اللهِ، السّلامُ عَلَيكَ يَابنَ مُحمَّدٍ المُصْطَفَى، السّلامُ عَلَيكَ يَابنَ عَليٍّ المُرْتَضَى، السّلامُ عَليكَ يَابنَ فاطِمَةَ الزَّهراء، السّلامُ عَلَيكَ يَابنَ خَدِيجَةَ الكُبْرَى، السَّلامُ عَلَيكَ يَا ثَارَ اللهِ وَابنَ ثَأْرِهِ وَالوِتْرَ المُوتُورَ، أَشهَدُ أَنَّكَ قَد أَقَمْتَ الصَّلاةَ وَآتَيْتَ الزَّكَاةَ، وَأمَرْتَ بِالمَعرُوفِ وَنَهَيْتَ عَنِ المُنكَرِ، وَأَطَعْتَ اللهَ وَرسُولَهُ حَتَّى أَتَاكَ اليَقِينُ، فَلَعَنَ اللهُ أُمَّةً قَتَلَتْكَ وَلَعَنَ اللهُ أُمَّةً ظَلَمَتْكَ، وَلعنَ اللهُ أُمَّةً سَمِعَتِ بِذَلِكَ فَرَضِيَتْ بِهِ، يَا مَولايَ يَا أَبَا عَبدِاللهِ أَشْهَدُ أَنَّكَ كُنْتَ نُوراً فِي الأَصْلابِ الشَّامِخَةِ وَالأَرْحَامِ المُطَهَّرَةِ لَمْ تُنَجّسْكَ الجَاهِلِيَّةُ بِأَنْجَاسِهَا وَلَمْ تُلْبِسْكَ مِن مُدْلَهِمَّاتِ ثِيَابِهَا، وَأَشهَدُ أَنَّكَ مِن دَعَائِمِ الدِّينِ وَأَركَانِ المُؤمِنِينَ، وَأَشهَدُ أَنَّكَ الإِمَامُ البَرُّ التَّقِيُّ الرَّضِيُّ الزَّكِيُّ الهادِيُ المَهدِيُّ، وَأَشهَدُ أنَّ الأَئِمَّةَ مِن وُلْدِكَ كَلِمَةُ التَّقوَى وَأَعلامُ الهدَى وَالعُروَةُ الوُثقَى وَالحُجَّةُ عَلَى أَهلِ الدُّنيَا، وَأُشهِدُ اللهَ وَمَلائِكَتَهُ وأَنبِيَاءَهُ وَرُسُلَهُ أَنِّي بِكُم مُؤمِنٌ وَبِإِيَابِكُمْ مُوْقِنٌ بِشَرَائِعِ دِينِي وَخواتِيمِ عَمَلِي وَقَلْبِي لِقَلبِكُم سِلْمٌ وَأَمرِي لأَمرِكُم مُتَّبِعٌ، صَلَواتُ اللهِ عَلَيكُم وَعَلَى أَرْوَاحِكُم وَعَلَى أَجْسَادِكُم وَعَلَى أَجسَامِكُم، وَعَلَى شَاهِدكُم وَعَلَى غائِبِكُم وَعَلَى ظَاهِرِكُم وَعَلَى بَاطِنِكُم.
+بِأَبِي أَنْتَ وَأُمِّي يَابْنَ رَسُولِ اللهِ، بِأَبِي أَنْتَ وَأُمِّي يا أَبا عَبْدِاللهِ، لَقَدْ عَظُمَتِ الرَّزِيَّةُ وَجَلَّتِ الْمُصيبَةُ بِكَ عَلَيْنا وَعَلى جَميعِ أَهْلِ السَّمَاواتِ والْأَرْضِ، فَلَعَنَ اللهُ أُمَّةً أَسْرَجَتْ وَأَلْجَمَتْ وَتَهَيَّأَتْ لِقِتالِكَ، يا مَوْلايَ يا أَبا عَبْدِاللهِ قَصَدْتُ حَرَمَكَ، وَأَتَيْتُ اِلى مَشْهَدِكَ، أَسْألُ اللهَ بِالشَّأنِ الَّذي لَكَ عِنْدَهُ وبالمَحَلِّ الَّذِي لَكَ لَدَيْهِ، أَنْ يُصَلِّيَ عَلى مُحَمَّدٍ وَآلِ مُحَمَّد، وَأَنْ يَجْعَلَنِي مَعَكُمْ فِي الدُّنْيا وَالْآخِرَةِ.
+ثمّ قم وصرْ إلى عند رجلَيْ القبر وقفْ عند رأس عليّ بن الحسين(عليه السلام) وقلْ:
+السَّلامُ عَلَيْكَ يابْنَ رَسُولِ اللهِ، السَّلامُ عَلَيْكَ يابْنَ نَبِيِّ اللهِ، السَّلامُ عَلَيْكَ يابْنَ أَمِيرِ المُؤْمِنِينَ، السَّلامُ عَلَيْكَ يابْنَ الحُسَيْنِ الشَّهِيدِ، السَّلامُ عَلَيْكَ أَيُّها الشَّهِيدُ، السَّلامُ عَلَيْكَ أَيُّها المَظْلُومُ وَابْنُ المَظْلُومُ، لَعَنَ اللهُ أُمَّةً قَتَلَتْكَ وَلَعَنَ اللهُ أُمَّةً ظَلَمَتْكَ وَلَعَنَ اللهُ أُمَّةً سَمِعَتْ بِذلِكَ فَرَضِيَتْ بِهِ. ثم انكب على القبر وقل: السَّلامُ عَلَيْكَ يا وَلِيَّ اللهِ وَابْنَ وَلِيِّهِ لَقَدْ عَظُمَتِ المُصِيبَةُ وَجَلَّتِ الرَّزِيَّةُ بِكَ عَلَيْنا وَعَلى جَمِيعِ المُسْلِمِينَ فَلَعَنَ اللهُ أُمَّةً قَتَلَتْكَ وَأَبْرَاُ إِلى اللهِ وَإِلَيْكَ مِنْهُمْ.
+ثمّ توجّه إلى الشهداء وقلْ:
+السَّلامُ عَلَيْكُمْ يا أَوْلِياءَ اللهِ وَأَحِبّاءَهُ، السَّلامُ عَلَيْكُمْ يا أَصْفِياءَ اللهِ وَأَوِدَّاءَهُ، السَّلامُ عَلَيْكُمْ يا أَنْصارَ دِينِ اللهِ، السَّلامُ عَلَيْكُمْ يا أَنْصارَ رَسُولِ اللهِ، السَّلامُ عَلَيْكُمْ يا أَنْصارَ أَمِيرِ المُؤْمِنِينَ، السَّلامُ عَلَيْكُمْ يا أَنْصارَ فاطِمَةَ سَيِّدَةِ نِساءِ العالَمِينَ، السَّلامُ عَلَيْكُمْ يا أَنْصارَ أَبِي مُحَمَّدٍ الحَسَنِ بْنِ عَلِيٍّ الوَلِيِّ النَّاصِحِ، السَّلامُ عَلَيْكُمْ يا أَنْصارَ أَبِي عَبْدِاللهِ، بِأَبِي أَنْتُمْ وَأُمِّي طِبْتُمْ وَطابَتِ الأَرْضُ الَّتِي فِيها دُفِنْتُمْ وَفُزْتُمْ فَوْزاً عَظِيماً، فَيا لَيْتَنِي كُنْتُ مَعَكُمْ فَأَفُوزَ مَعَكُمْ.</mutableString>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="yfm-jx-Xg4" firstAttribute="top" secondItem="IVG-GG-djw" secondAttribute="top" id="B7h-yd-0bZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="yfm-jx-Xg4" secondAttribute="bottom" id="PRU-Bs-nK8"/>
+                                    <constraint firstItem="0UC-X5-UTQ" firstAttribute="top" secondItem="IVG-GG-djw" secondAttribute="top" constant="8" id="a8M-Fs-gZi"/>
+                                    <constraint firstItem="yfm-jx-Xg4" firstAttribute="leading" secondItem="IVG-GG-djw" secondAttribute="leading" id="asz-Lj-vse"/>
+                                    <constraint firstItem="0UC-X5-UTQ" firstAttribute="leading" secondItem="IVG-GG-djw" secondAttribute="leading" constant="8" id="h9T-nd-dIT"/>
+                                    <constraint firstItem="0UC-X5-UTQ" firstAttribute="centerX" secondItem="IVG-GG-djw" secondAttribute="centerX" id="jmQ-yl-jU1"/>
+                                    <constraint firstAttribute="bottom" secondItem="0UC-X5-UTQ" secondAttribute="bottom" constant="8" id="owV-ga-A6F"/>
+                                    <constraint firstAttribute="trailing" secondItem="0UC-X5-UTQ" secondAttribute="trailing" constant="8" id="pH1-Th-LAd"/>
+                                    <constraint firstItem="0UC-X5-UTQ" firstAttribute="centerY" secondItem="IVG-GG-djw" secondAttribute="centerY" id="sU5-aJ-cdR"/>
+                                    <constraint firstAttribute="trailing" secondItem="yfm-jx-Xg4" secondAttribute="trailing" id="uBz-Li-jlU"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="50v-YT-OkF" firstAttribute="leading" secondItem="TLb-wa-KcH" secondAttribute="leading" id="6PB-1P-Ait"/>
+                            <constraint firstItem="Bpw-qC-z1v" firstAttribute="top" secondItem="IVG-GG-djw" secondAttribute="bottom" id="BkY-4k-BqL"/>
+                            <constraint firstItem="50v-YT-OkF" firstAttribute="top" secondItem="TLb-wa-KcH" secondAttribute="top" id="kxV-hB-PdB"/>
+                            <constraint firstAttribute="trailing" secondItem="IVG-GG-djw" secondAttribute="trailing" id="svs-BO-459"/>
+                            <constraint firstItem="IVG-GG-djw" firstAttribute="leading" secondItem="TLb-wa-KcH" secondAttribute="leading" id="vBy-rD-AfB"/>
+                            <constraint firstItem="IVG-GG-djw" firstAttribute="top" secondItem="50v-YT-OkF" secondAttribute="bottom" id="wfV-Hl-8OL"/>
+                            <constraint firstAttribute="trailing" secondItem="50v-YT-OkF" secondAttribute="trailing" id="zZH-iu-f5M"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="paragraph" destination="0UC-X5-UTQ" id="Fh6-uq-afl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYX-7v-Kh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1935" y="-239"/>
+        </scene>
+        <!--Reading View Controller-->
+        <scene sceneID="HFg-gg-k27">
+            <objects>
+                <viewController id="AlM-c1-gQI" customClass="ReadingViewController" customModule="Mashy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K01-7r-a3x"/>
+                        <viewControllerLayoutGuide type="bottom" id="c5T-E0-8Gd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PJV-qb-bbr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ap6-Tg-eff">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="g1B-gq-RCG"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="زيارة الامام العباس" id="BZz-nB-Ufu">
+                                        <leftBarButtonItems>
+                                            <barButtonItem image="ic_zoom_in_36pt" id="Jq7-KF-y6a">
+                                                <connections>
+                                                    <action selector="fontUp:" destination="AlM-c1-gQI" id="07f-Ss-uBI"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="ic_zoom_out_36pt" id="A56-j7-Xzs">
+                                                <connections>
+                                                    <action selector="fontDown:" destination="AlM-c1-gQI" id="JXF-nX-1dm"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="رجوع" id="5BR-NY-uC0">
+                                            <connections>
+                                                <action selector="dismiss:" destination="6Br-b5-vMY" id="Fzz-wa-L20"/>
+                                                <segue destination="bzJ-e8-Gcr" kind="show" id="PFO-zO-gAz"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALl-JQ-A4e">
+                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Mkf-Rm-DzP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="9fd-GW-ep4">
+                                        <rect key="frame" x="8" y="8" width="359" height="585"/>
+                                        <mutableString key="text">سَلامُ اللهِ وَسَلامُ مَلائِكَتِهِ الْمُقَرَّبِينَ وَأَنْبِيائِهِ الْمُرْسَلِينَ، وَعِبادِهِ الصّالِحِينَ وَجَمِيعِ الشُّهَداءِ وَالصِّدِّيقِينَ، وَالزَّاكِياتُ الطَّيِّباتُ فِيـَما تَغْتَدِي وَتَرُوحُ عَلَيْكَ يَابْنَ أَمِيرِ الْمُؤْمِنِينَ، أَشْهَدُ لَكَ بِالتَّسْلِيمِ وَالتَّصْدِيقِ وَالْوَفاءِ وَالنَّصِيحَةِ، لِخَلَفِ النَّبِيِّ(صَلَّى اللهُ عَلَيْهِ وَآلِهِ) الْمُرْسَلِ، وَالسِّبْطِ الْمُنْتَجَبِ، وَالدَّليلِ الْعالِمِ، وَالْوَصِيِّ الْمُبَلِّغِ، وَالْمَظْلُومِ الْمُهْتَضَمِ، فَجَزاكَ اللهُ عَنْ رَسُولِهِ وَعَنْ أَمِيرِ الْمُؤْمِنينَ وَعَنْ فاطمةَ والْحَسَنِ وَالْحُسَيْنِ(صَلَواتُ اللهِ عَلَيْهِمْ) أَفْضَلَ الْجَزاءِ، بِما صَبَرْتَ وَاحْتَسَبْتَ وَأَعَنْتَ فَنِعْمَ عُقْبَى الدّارِ، لَعَنَ اللهُ مَنْ قَتَلَكَ وَلَعَنَ اللهُ مَنْ جَهِلَ حَقَّكَ وَاسْتَخَفَّ بِحُرْمَتِكَ، وَلَعَنَ اللهُ مَنْ حَالَ بَيْنَكَ وَبَيْنَ مَاءِ الْفُراتِ، أَشْهَدُ أَنَّكَ قُتِلْتَ مَظْلُوماً، وَأَنَّ اللهَ مُنْجِزٌ لَكُمْ مَا وَعَدَكُمْ، جِئْتُكَ يَابْنَ أَمِيرِ اْلُمْؤْمِنينَ وَافِداً اِلَيْكُمْ، وَقَلْبِي مُسَلِّمٌ لَكُمْ وَتابِعٌ، وَأَنَا لَكُمْ تابِـعٌ وَنُصْرَتِي لَكُمْ مُعَدَّةٌ، حَتّى يَحْكُمَ اللهُ وَهُوَ خَيْرُ الْحاكِمِينَ، فَمَعَكُمْ مَعَكُمْ لا مَعَ عَدُوِّكُمْ، إِنّي بِكُمْ وَبِإيابِكُمْ مِنَ الْمُؤْمِنينَ، وَبِمَنْ خالَفَكُمْ وَقَتَلَكُمْ مِنَ الْكافَرينَ، قَتَلَ اللهُ أُمَّةً قَتَلَتْكُمْ بِالأَيْدِي وَالأَلْسُنِ.
+ثمّ ادخل فانكبّ على القبر وقلْ: اَلسَّلامُ عَلَيْكَ أَيُّهَا الْعَبْدُ الصّالِحُ الْمُطِيعُ للهِ وَلِرَسُولِهِ وَلِأَميرِ الْمُؤْمِنينَ وَالْحَسَنِ والْحُسَيْنِ(صَلَّى اللهُ عَلَيْهِمْ وَسَلَّمَ)، اَلسَّلامُ عَلَيْكَ وَرَحْمَةُ اللهِ وَبَرَكاتُهُ، وَمَغْفِرَتُهُ وَرِضْوانُهُ وَعَلَى رُوحِكَ وَبَدَنِكَ، أَشْهَدُ وأُشْهِدُ اللهَ أَنَّكَ مَضَيْتَ عَلَى مَا مَضَى بِهِ الْبَدْرِيُّونَ وَالْمُجَاهِدُونَ فِي سَبيلِ اللهِ الْمُناصِحُونَ لَهُ فِي جِهادِ أَعْدائِهِ، الْمُبالِغُونَ فِي نُصْرَةِ أَوْلِيائِهِ، الذّابُّونَ عَنْ أَحِبّائِهِ، فَجَزاكَ اللهُ أَفْضَلَ الْجَزاءِ، وَأَكْثَرَ الْجَزاءِ، وَأَوْفَرَ الْجَزاءِ، وَأَوْفَى جَزاءِ أَحَدٍ مِمَّنْ وَفَى بِبَيْعَتِهِ، وَاسْتَجابَ لَهُ دَعْوَتَهُ، وَأَطاعَ وُلاةَ أَمْرِهِ، أَشْهَدُ أَنَّكَ قَدْ بالَغْتَ فِي النَّصِيحَةِ وَأَعْطَيْتَ غايَةَ المَجْهُودِ، فَبَعَثَكَ اللهُ فِي الشُّهَداءِ، وَجَعَلَ رُوحَكَ مَعَ أَرْواحِ السُّعَداءِ، وَأَعْطاكَ مِنْ جِنانِهِ أَفْسَحَها مَنْزِلاً وَأَفْضَلَها غُرَفاً، وَرَفَعَ ذِكْرَكَ فِي عِلِّيِّينَ، وَحَشَرَكَ مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَداءِ وَالصّالِحِينَ وَحَسُنَ أُولئِكَ رَفيقاً، أَشْهَدُ أَنَّكَ لَمْ تَهِنْ وَلَمْ تَنْكُلْ، وَأَنَّكَ مَضَيْتَ عَلَى بَصِيرَةٍ مِنْ أَمْرِكَ مُقْتَدِياً بِالصّالِحِينَ، وَمُتَّبِعاً لِلنَّبِيّينَ، فَجَمَعَ اللهُ بَيْنَنا وَبَيْنَكَ وَبَيْنَ رَسُولِهِ وَأَوْلِيائِهِ فِي مَنازِلِ الْمُخْبِتِينَ، فَإِنَّهُ أَرْحَمُ الرّاحِمِينَ.
+ثمّ صرْ الى الرأس الشريف وصلّ ركعتين وادعُ بهذا الدعاء: اَللّـهُمَّ صَلِّ عَلى مُحَمَّدٍ وَآلِ مُحَمَّدٍ، وَلا تَدَعْ لي فِي هذَا الْمَكانِ الْمُكَرَّمِ وَالْمَشْهَدِ الْمُعَظَّمِ ذَنْباً إِلَّا غَفَرْتَهُ، وَلا هَمّاً إِلَّا فَرَّجَتَهُ، وَلا مَرَضاً إِلَّا شَفَيْتَهُ، وَلا عَيْباً إِلَّا سَتَرْتَهُ، وَلا رِزْقاً إِلَّا بَسَطْتَهُ، وَلا خَوْفاً إِلَّا آمَنْتَهُ، وَلا شَمْلاً إِلَّا جَمَعْتَهُ، وَلا غائِباً إِلَّا حَفِظْتَهُ وَأَدْنَيْتَهُ، وَلا حَاجَةً مِنْ حَوائِجِ الدُّنْيا وَالْآخِرَةِ لَكَ فيها رِضَىً وَلِيَ فِيهَا صَلاحٌ إِلَّا قَضَيْتَها يا أَرْحَمَ الرّاحِمِينَ.
+ثمّ عدْ الى جهة الرّجلَيْن وقلْ: اَلسَّلامُ عَلَيْكَ يا أَبَا الْفَضْلِ الْعَبّاسَ ابْنَ أَميرِ الْمُؤْمِنينَ، اَلسَّلامُ عَلَيْكَ يَابْنَ سَيِّدِ الْوَصِيِّينَ، اَلسَّلامُ عَلَيْكَ يَابْنَ أَوَّلِ الْقَوْمِ إِسْلاماً، وَأَقْدَمِهِمْ إِيْمَاناً وَأَقْوَمِهِمْ بِدينِ اللهِ، وَأَحْوَطِهِمْ عَلَى الإِسْلامِ، أَشْهَدُ لَقَدْ نَصَحْتَ للهِ وَلِرَسُولِهِ وَلِأَخيكَ فَنِعْمَ الأَخُ الْمُواسي، فَلَعَنَ اللهُ أُمَّةً قَتَلَتْكَ، وَلَعَنَ اللهُ أُمَّةً ظَلَمَتْكَ، وَلَعَنَ اللهُ أُمَّةً اسْتَحَلَّتْ مِنْكَ الْمَحارِمَ، وَانْتَهَكَتْ حُرْمَةَ الإِسْلامِ، فَنِعْمَ الصّابِرُ الْمُجاهِدُ الْمُحامِي النّاصِرُ، وَالأَخُ الدّافِعُ عَنْ أَخيهِ، الْمُجيبُ اِلى طَاعَةِ رَبِّهِ، الرّاغِبُ فيـما زَهِدَ فيهِ غَيْرُهُ مِنَ الثَّوابِ الْجَزيلِ وَالثَّناءِ الْجَميلِ، وَأَلْحَقَكَ اللهُ بِدَرَجَةِ آبائِكَ فِي جَنّاتِ النَّعيمِ، اَللّـهُمَّ إِنّي تَعَرَّضْتُ لِزِيارَةِ أَوْلِيائِكَ رَغْبَةً فِي ثَوابِكَ، وَرَجَاءً لِمَغْفِرَتِكَ وَجَزيلِ إِحْسانِكَ، فَأَسْأَلُكَ أَنْ تُصَلِّيَ عَلى مُحَمَّدٍ وَآلِهِ الطّاهِرينَ، وَأَنْ تَجْعَلَ رِزْقِي بِهِمْ دارّاً وَعَيْشِي بِهِمْ قارّاً، وَزِيارَتِي بِهِمْ مَقْبُولَةً وَحَياتِي بِهِمْ طَيِّبَةً، وَأَدْرِجْنِي إِدْراجَ الْمُكْرَمِينَ، وَاجْعَلْني مِمَّنْ يَنْقَلِبُ مِنْ زِيارَةِ مَشاهِدِ أَحِبّائِكَ مُفْلِحاً مُنْجِحاً، قَدِ اسْتَوْجَبَ غُفْرانَ الذُّنُوبِ وَسَتْرَ الْعُيُوبِ وَكَشْفَ الْكُرُوبِ، إِنَّكَ أَهْلُ التَّقْوى وَأَهْلُ الْمَغْفِرَةِ.</mutableString>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9fd-GW-ep4" firstAttribute="centerY" secondItem="ALl-JQ-A4e" secondAttribute="centerY" id="2vG-eM-IRd"/>
+                                    <constraint firstItem="Mkf-Rm-DzP" firstAttribute="top" secondItem="ALl-JQ-A4e" secondAttribute="top" id="4hm-aD-H38"/>
+                                    <constraint firstItem="9fd-GW-ep4" firstAttribute="centerX" secondItem="ALl-JQ-A4e" secondAttribute="centerX" id="6rD-8W-dTH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mkf-Rm-DzP" secondAttribute="trailing" id="BZT-1X-WQC"/>
+                                    <constraint firstItem="Mkf-Rm-DzP" firstAttribute="leading" secondItem="ALl-JQ-A4e" secondAttribute="leading" id="Ht2-W9-cTy"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fd-GW-ep4" secondAttribute="trailing" constant="8" id="KSL-Hy-VTO"/>
+                                    <constraint firstItem="9fd-GW-ep4" firstAttribute="top" secondItem="ALl-JQ-A4e" secondAttribute="top" constant="8" id="Mg8-Ux-Nqx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mkf-Rm-DzP" secondAttribute="bottom" id="Vcs-Dq-Xr2"/>
+                                    <constraint firstItem="9fd-GW-ep4" firstAttribute="leading" secondItem="ALl-JQ-A4e" secondAttribute="leading" constant="8" id="W1O-mw-UXd"/>
+                                    <constraint firstAttribute="bottom" secondItem="9fd-GW-ep4" secondAttribute="bottom" constant="8" id="jgT-gG-Z3d"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c5T-E0-8Gd" firstAttribute="top" secondItem="ALl-JQ-A4e" secondAttribute="bottom" id="1nV-EH-6es"/>
+                            <constraint firstItem="Ap6-Tg-eff" firstAttribute="top" secondItem="PJV-qb-bbr" secondAttribute="top" id="AlN-gQ-DCi"/>
+                            <constraint firstItem="Ap6-Tg-eff" firstAttribute="leading" secondItem="PJV-qb-bbr" secondAttribute="leading" id="BKb-Zm-WuU"/>
+                            <constraint firstItem="ALl-JQ-A4e" firstAttribute="top" secondItem="Ap6-Tg-eff" secondAttribute="bottom" id="PYA-nG-nDD"/>
+                            <constraint firstAttribute="trailing" secondItem="ALl-JQ-A4e" secondAttribute="trailing" id="eQ9-5Q-WQY"/>
+                            <constraint firstItem="ALl-JQ-A4e" firstAttribute="leading" secondItem="PJV-qb-bbr" secondAttribute="leading" id="tkK-aM-QhL"/>
+                            <constraint firstAttribute="trailing" secondItem="Ap6-Tg-eff" secondAttribute="trailing" id="wgJ-0P-X3Z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="paragraph" destination="9fd-GW-ep4" id="kKs-zQ-S4Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gN6-K2-mdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-820" y="537"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Image" width="300" height="450"/>
+        <image name="ic_zoom_in_36pt" width="36" height="36"/>
+        <image name="ic_zoom_out_36pt" width="36" height="36"/>
         <image name="knowledge" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BQl-Z5-giO"/>
+    </inferredMetricsTieBreakers>
 </document>

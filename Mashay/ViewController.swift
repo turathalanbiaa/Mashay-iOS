@@ -24,6 +24,13 @@ class ViewController: UIViewController
     var pedoMeter : PedoMeterReader?;
     
     
+    @IBOutlet weak var ziara1Button: UIButton!
+    
+    @IBOutlet weak var ziara2Button: UIButton!
+    
+    @IBOutlet weak var ziara3Button: UIButton!
+    @IBOutlet weak var withYouButton: UIButton!
+    
     
     override func viewDidLoad()
     {
@@ -41,6 +48,12 @@ class ViewController: UIViewController
         lostButton.layer.cornerRadius = 25;
         placesButton.layer.cornerRadius = 25;
         healthButton.layer.cornerRadius = 25;
+        
+        ziara1Button.layer.cornerRadius = 25;
+        ziara2Button.layer.cornerRadius = 25;
+        ziara3Button.layer.cornerRadius = 25;
+        
+        withYouButton.layer.cornerRadius = 25;
     }
     
     @IBAction func gotoMapAction(_ sender: Any)
@@ -51,12 +64,20 @@ class ViewController: UIViewController
     
     func gotoMap(category : Int?)
     {
-        let storybord = UIStoryboard(name: "Main", bundle: nil);
-        let controller = storybord.instantiateViewController(withIdentifier: "NearestPlaceViewController") as! NearestPlaceViewController;
+        
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "NearestPlaceViewController") as! NearestPlaceViewController;
         controller.category = category;
         present(controller, animated: true, completion: nil);
     }
     
+    @IBAction func openWithYouApp(_ sender: Any)
+    {
+        if let url = URL(string: "https://itunes.apple.com/us/app/%D8%A7%D9%86%D8%A7-%D9%85%D8%B9%D9%83%D9%85/id1172405052"),
+            UIApplication.shared.canOpenURL(url)
+        {
+            UIApplication.shared.openURL(url)
+        }
+    }
 }
 
 
